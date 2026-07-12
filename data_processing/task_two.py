@@ -17,7 +17,7 @@ for file_path in data_folder.glob("*.csv"):
         csv_reader = csv.DictReader(infile)
 
         csv_writer = csv.DictWriter(
-            outfile, fieldnames=["Sales", "Date", "Region"])
+            outfile, fieldnames=["sales", "date", "region"])
         csv_writer.writeheader()
         match_count = 0
         for row in csv_reader:
@@ -30,11 +30,11 @@ for file_path in data_folder.glob("*.csv"):
                 formatted_sales = f"${sales:,.2f}"
 
                 output_data = {
-                    "Sales": formatted_sales,
-                    "Date": row["date"],
-                    "Region": row["region"]
+                    "sales": formatted_sales,
+                    "date": row["date"],
+                    "region": row["region"]
                 }
 
                 csv_writer.writerow(output_data)
 
-        # (f"Finished {file_path} with {match_count} matches saved")
+        # print(f"Finished {file_path} with {match_count} matches saved")
